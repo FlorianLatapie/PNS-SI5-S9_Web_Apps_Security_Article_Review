@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Underscore.js Template Example</title>
+  <script src="lib/underscore.js"></script> <!-- dowloaded from https://underscorejs.org/underscore-umd.js -->
+</head>
+<body>
+    <h1>underscore.js XSS attack example</h1>
+
+    <script type="text/template" id="template">
+        <%= alert("underscore.js XSS") %> <!-- XSS vulnerability -->
+    </script>
+
+    <div id="output"></div>
+
+    <script>
+        var data = {
+            key: "value"
+        };
+
+        var template = _.template(document.getElementById("template").innerHTML);
+        document.getElementById("output").innerHTML = template(data);
+    </script>
+</body>
+</html>

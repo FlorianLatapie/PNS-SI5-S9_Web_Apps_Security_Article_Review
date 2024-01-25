@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Underscore.js Template Example</title>
+  <script src="lib/underscore.js"></script> <!-- dowloaded from https://underscorejs.org/underscore-umd.js -->
+</head>
+<body>
+    <h1>underscore.js XSS attack example</h1>
+  
+    <label for="nameInput">Enter your name: </label>
+    <input type="text" id="nameInput" placeholder="Your Name">
+  
+    <button onclick="generateGreeting()">Generate Greeting</button>
+  
+    <div id="output"></div>
+  
+    <script>
+      function generateGreeting() {
+        // Get user input
+        var userName = document.getElementById('nameInput').value;
+  
+        // Underscore.js template
+        var template = _.template('Hello, <%= name %>!');
+  
+        // Data to be used in the template
+        var data = { name: eval(userName) }; // <-- XSS vulnerability
+  
+        // Applying the template to the data
+        var result = template(data);
+  
+        // Display the result
+        document.getElementById('output').innerHTML = result;
+      }
+    </script>
+  </body>
+  </html>
+  
