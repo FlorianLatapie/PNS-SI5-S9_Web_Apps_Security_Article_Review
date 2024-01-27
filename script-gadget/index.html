@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Underscore.js Template Example</title>
+</head>
+<body>
+    <div data-role="button" data-text="hello <script>alert(1)</script>"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelector('div[data-role="button"]');
+            if (buttons) {
+                console.log(buttons.getAttribute("data-text"));
+                buttons.innerHTML = buttons.getAttribute("data-text");
+            }
+        });
+    </script>
+</body>
+</html>
