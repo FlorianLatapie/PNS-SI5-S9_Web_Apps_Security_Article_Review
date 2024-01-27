@@ -1,0 +1,6 @@
+<template>
+    <h1>${message}</h1>
+    <h1>${message.toUpperCase()}</h1>
+
+    <div ref="me" anyVariable.bind="$this.me.ownerDocument.defaultView.alert('Aurelia XSS')"></div>
+</template>

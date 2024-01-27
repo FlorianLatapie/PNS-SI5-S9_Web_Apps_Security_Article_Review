@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./underscore:/app/static/underscore
+      - ./script-gadget:/app/static/script-gadget
+      - ./aurelia:/app/src
+    ports:
+      - 8080:8080
+
+# docker compose up -d --build
+# in the container to compile again: au build
