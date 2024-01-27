@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Script Gadget Example</title>
+    <script type="text/javascript" src="../dist/purify.min.js"></script>
 </head>
 
 <body>
@@ -15,11 +16,11 @@
             const inputDataContainer = document.getElementById("input-data-div");
 
             if (inputPayload && inputDataContainer) {
-                inputDataContainer.innerHTML = inputPayload.value;
+                inputDataContainer.innerHTML = DOMPurify.sanitize(inputPayload.value);
 
                 inputPayload.addEventListener('change', function () {
                     console.log(`payload changed : ${inputPayload.value}`);
-                    inputDataContainer.innerHTML = inputPayload.value;
+                    inputDataContainer.innerHTML = DOMPurify.sanitize(inputPayload.value);
                     const htmlMarkUp = document.querySelector('div[data-role="payload"]');
                     if (htmlMarkUp) {
                         console.log('htmlMarkUp found')
