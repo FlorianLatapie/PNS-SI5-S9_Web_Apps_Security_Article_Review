@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Underscore.js Template Example</title>
+    <meta charset="UTF-8">
+    <title>Script Gadget Example</title>
 </head>
+
 <body>
-    <div data-role="button" data-text="hello <script>alert(1)</script>"></div>
+    <input type="text" id="input" value="Enter your payload">
+    <div id="input-data-div"></div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelector('div[data-role="button"]');
-            if (buttons) {
-                console.log(buttons.getAttribute("data-text"));
-                buttons.innerHTML = buttons.getAttribute("data-text");
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputPayload = document.getElementById("input");
+            const inputDataContainer = document.getElementById("input-data-div");
+
+            if (inputPayload && inputDataContainer) {
+                inputDataContainer.innerHTML = inputPayload.value;
+
+                inputPayload.addEventListener('change', function () {
+                    console.log(`payload changed : ${inputPayload.value}`);
+                    inputDataContainer.innerHTML = inputPayload.value;
+                    const htmlMarkUp = document.querySelector('div[data-role="payload"]');
+                    if (htmlMarkUp) {
+                        console.log('htmlMarkUp found')
+                        const container = document.createElement('script');
+                        container.innerHTML = htmlMarkUp.getAttribute('data-text');
+                        document.body.appendChild(container);
+                    }
+                });
             }
         });
     </script>
 </body>
+
 </html>

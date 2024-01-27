@@ -1,0 +1,1 @@
+<div data-role="payload" data-text="alert('DOM XSS');"></div>
