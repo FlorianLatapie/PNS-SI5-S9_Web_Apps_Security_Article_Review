@@ -5,8 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./underscore:/app/static/underscore
-      - ./script-gadget:/app/static/script-gadget
+      - ./js_examples:/app/static/js_examples
       - ./aurelia:/app/src
     ports:
       - 8080:8080
