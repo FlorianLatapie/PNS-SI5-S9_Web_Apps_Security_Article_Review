@@ -17,13 +17,10 @@
   
     <script>      
       function generateGreeting(){
-        var data = {
-          key: "value"
-        };
-        
-        var to_interpret = _.template("<%" + document.getElementById('nameInput').value + "%>");
 
-        document.getElementById("output").innerHTML = to_interpret(data);
+        var mytemplate = _.template("<%" + document.getElementById('nameInput').value.toLowerCase() + "%>");
+
+        document.getElementById("output").innerHTML = mytemplate();
       }
     </script>
   </body>

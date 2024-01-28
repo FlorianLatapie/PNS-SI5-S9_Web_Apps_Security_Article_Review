@@ -1,8 +1,9 @@
 <template>
     <h1>${message}</h1>
     <h1>${message.toUpperCase()}</h1>
+    <h1>${alert('Does not work')}</h1>
 
-    <div ref="me" anyVariable.bind="$this.me.ownerDocument.defaultView.alert('Aurelia XSS')"></div>
+    <div ref="me" $.bind="$this.me.ownerDocument.defaultView.alert('Aurelia XSS')"></div>
     <a href="js_examples/index.html">js_examples/index.html</a>
 </template>
 
