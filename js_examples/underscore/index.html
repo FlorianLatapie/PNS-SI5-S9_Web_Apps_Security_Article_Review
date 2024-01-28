@@ -16,16 +16,12 @@
     <div id="output"></div>
 
     <script>
-        var data = {
-            key: "value"
-        };
-        
         // Rendering template with user-controlled data 
         // Implementation : with div tag you need to use innerText instead of innerHTML, otherwise the special characters will be escaped
         // The reason is I don't why, yet.
         var template = _.template(document.getElementById("template").innerText);
         // Execution sink
-        document.getElementById("output").innerHTML = template(data);
+        document.getElementById("output").innerHTML = template();
     </script>
 </body>
 </html>
