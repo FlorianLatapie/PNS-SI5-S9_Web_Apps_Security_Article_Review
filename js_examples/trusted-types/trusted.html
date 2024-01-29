@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="trusted-types unsafe escape; require-trusted-types-for 'script'">
+    <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
     <title>Titre de la page</title>
 </head>
 <body>
-    <div data-role="payload" data-text="alert('DOM XSS')"></div>
+    <div id="myDiv"></div>
+
     <script>
-        const htmlMarkUp = document.querySelector('div[data-role="payload"]');
-        if (htmlMarkUp) {
-            const container = document.createElement('script');
-            container.innerHTML = htmlMarkUp.getAttribute('data-text');
-            document.body.appendChild(container);
-        }
+        const escapeHTMLPolicy = trustedTypes.createPolicy("myEscapePolicy", {
+            createHTML: (string) => string.replace(/>/g, "<"),
+        });
+
+        let el = document.getElementById("myDiv");
+        const escaped = document.createElement("script");
+        escaped.innerHTML = escapeHTMLPolicy.createHTML("alert('Hello World!')");
+        console.log(escaped.innerHTML instanceof TrustedHTML);
+        el.appendChild(escaped);
     </script>
 </body>
 </html>
