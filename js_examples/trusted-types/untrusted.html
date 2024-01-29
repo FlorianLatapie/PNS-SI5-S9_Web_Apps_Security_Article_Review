@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titre de la page</title>
+
+
+    
 </head>
 <body>
-    <div data-role="payload" data-text="alert('DOM XSS')"></div>
+    <div id="myDiv"></div>
+
     <script>
-        const htmlMarkUp = document.querySelector('div[data-role="payload"]');
-        if (htmlMarkUp) {
-            const container = document.createElement('script');
-            container.innerHTML = htmlMarkUp.getAttribute('data-text');
-            document.body.appendChild(container);
-        }
+
+
+
+
+        let el = document.getElementById("myDiv");
+        const escaped = "<img src=x onerror=alert(1)>";
+
+        el.innerHTML = escaped;
     </script>
 </body>
 </html>
