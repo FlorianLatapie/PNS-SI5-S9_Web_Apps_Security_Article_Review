@@ -10,8 +10,8 @@ RUN au new myproject --here -s
 
 RUN npm install
 
-# COPY aurelia/ /app/
-# COPY js_examples/ /app/src/js_examples/
+COPY aurelia/ /app/
+COPY js_examples/ /app/src/js_examples/
 
 RUN npm run build
 
