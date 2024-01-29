@@ -10,6 +10,10 @@ Article Review for the Web Apps Security course of the Software Engineering curs
 docker-compose up -d --build
 ```
 
+## Accéder à l'application
+
+[localhost:8080/js_examples/](http://localhost:8080/js_examples/index.html)
+
 ## Mettre à jour le contenu du conteneur
 
 Les fichiers sont copiés dans le conteneur lors de la création de celui-ci. Pour mettre à jour le contenu du conteneur, des volumes sont utilisés. Il faut donc recompiler le projet Aurelia dans le conteneur.
